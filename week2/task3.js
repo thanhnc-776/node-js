@@ -4,7 +4,6 @@ const XLSX = require("xlsx");
 
 fs.readFile("./products.json", "utf8", (err, data) => {
   if (err) throw err;
-
   result = JSON.parse(data);
   result.forEach((e) => {
     const update = format(new Date(e.dateUpdated), "MM/dd/yyyy");
@@ -12,7 +11,6 @@ fs.readFile("./products.json", "utf8", (err, data) => {
     delete e.dateUpdated;
   });
 
-  const file = XLSX.readFile("./excel/report-product.xlsx");
   const ws = XLSX.utils.json_to_sheet(result);
   ws["!cols"] = [
     { width: 10 },
@@ -22,6 +20,7 @@ fs.readFile("./products.json", "utf8", (err, data) => {
     { width: 15 },
   ];
 
-  XLSX.utils.book_append_sheet(file, ws, "Products");
-  XLSX.writeFile(file, "./excel/report-product.xlsx");
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, "Products");
+  XLSX.writeFile(wb, "./excel/report-product.xlsx");
 });

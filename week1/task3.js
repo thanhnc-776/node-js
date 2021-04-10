@@ -33,6 +33,10 @@ console.log('Số học sinh nữ: ' + temp1);
 var temp2 = 0;
 students.reduce((x, y) => (y.gender === 'male' ? (temp2 += 1) : temp2), 0);
 console.log('Số học sinh nam: ' + temp2);
+// const count = students.reduce(
+// 	(initial, student) => (students.gender === 'male' ? initial + 1 : initial),
+// 	0
+// );
 
 var result = students.map((i) => i.name);
 console.log(result);
