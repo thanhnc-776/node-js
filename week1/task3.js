@@ -26,17 +26,16 @@ const students = [
 	},
 ];
 
-var temp1 = 0;
+let temp1 = 0;
 students.forEach((e) => (e.gender === 'female' ? (temp1 += 1) : temp1));
 console.log('Số học sinh nữ: ' + temp1);
+console.log('Số học sinh name: ' + (students.length - temp1));
 
-var temp2 = 0;
-students.reduce((x, y) => (y.gender === 'male' ? (temp2 += 1) : temp2), 0);
-console.log('Số học sinh nam: ' + temp2);
 // const count = students.reduce(
-// 	(initial, student) => (students.gender === 'male' ? initial + 1 : initial),
+// 	(initial, students) => (students.gender === 'male' ? initial + 1 : initial),
 // 	0
 // );
+// console.log('Số học sinh nam: ' + count);
 
-var result = students.map((i) => i.name);
+let result = students.map((i) => i.name);
 console.log(result);
