@@ -13,5 +13,5 @@ app.set('views', path.join(__dirname, '/views'));
 const router = require('./routes/app.js');
 app.use(router);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 9999;
 app.listen(PORT, () => console.log(`Connect successfully with http://localhost:${PORT}`));
