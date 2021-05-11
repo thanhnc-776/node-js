@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 const SchemaTypes = mongoose.SchemaTypes;
 
 const ProductSchema = new Schema({
+	_id:  String,
 	name: { type: String, required: true },
 	image: String,
 	thumbnail: String,
@@ -14,6 +15,8 @@ const ProductSchema = new Schema({
 	categoryId: {
 		type: SchemaTypes.String,
 		ref: 'Category',
+		localField: 'categoryId',
+		foreignField: '_id',
 	},
 });
 
@@ -21,6 +24,6 @@ ProductSchema.virtual('saleOff').get(function () {
 	return this.originalPrice ? (this.originalPrice - this.salePrice) / this.originalPrice : 0;
 });
 
-const Product = mongoose.model('Product', ProductSchema, 'products');
+const Product = mongoose.model('Product', ProductSchema);
 
 module.exports = Product;

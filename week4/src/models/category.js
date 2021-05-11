@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const SchemaTypes = mongoose.SchemaTypes;
 
 const categorySchema = new Schema({
-	_id: SchemaTypes.String,
+	_id: String,
 	name: String,
+	iconName: String,
 	descriptions: String,
 });
 
-const Category = mongoose.model('Category', categorySchema, 'categories');
+const Category = mongoose.model('Category', categorySchema);
 
 module.exports = Category;

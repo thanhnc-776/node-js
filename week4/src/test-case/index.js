@@ -8,7 +8,6 @@ module.exports = {
 			.limit(5)
 			.exec()
 			.then((results) => {
-				console.log('Results');
 				console.log(results.map((item) => item.toJSON()));
 			});
 	},
@@ -17,18 +16,12 @@ module.exports = {
 			.populate('categoryId', 'name')
 			.limit(5)
 			.exec()
-			.then((results) => {
-				console.log('Results');
-				console.log(results);
-			});
+			.then((results) => {console.log(results.map((item) => item.toJSON()));});
 	},
 	loadCategories: () => {
 		return Category.find({})
 			.limit(5)
 			.then((results) => {
-				console.log('Results');
-				console.log(results);
-
 				return results;
 			});
 	},

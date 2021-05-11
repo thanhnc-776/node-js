@@ -42,7 +42,7 @@ router.get('/', function (req, res) {
 		version: '1.0.0',
 		title: 'Nordic Shop RESTful API',
 		description: 'RESTful API for Web app, OpenAPI compliance',
-		contact: 'Nguyen Thanh <ncthanhmh@gmail.com',
+		contact: 'Nguyen Thanh <ncthanhmh@gmail.com>',
 	});
 });
 
