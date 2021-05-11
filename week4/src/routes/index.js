@@ -31,15 +31,22 @@ router.get('/admin/products', async (req, res) => {
 		.then((products) => res.render('products', { title: 'Products', products }));
 });
 
+router.get('/admin/products/:id', async (req, res) => {
+	Product.findById(req.params.id).lean().then((product) =>
+		res.render('detail-product', { title: 'Detail Products', product })
+	);
+});
+
 router.get('/admin/categories', async (req, res) => {
-  await Category.find({})
+	await Category.find({})
 		.lean()
 		.then((categories) => res.render('categories', { title: 'Categories', categories }));
 });
 
 router.get('/admin/users', async (req, res) => {
-	let users = await User.find({});
-	res.render('users', { title: 'Users', users });
+	await User.find({})
+		.lean()
+		.then((users) => res.render('users', { title: 'Users', users }));
 });
 
 router.get('/admin/orders', (req, res) => {
