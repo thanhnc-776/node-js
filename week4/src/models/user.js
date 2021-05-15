@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 // Define schema with supported data type
 const UserSchema = new Schema({
-  _id: Schema.Types.ObjectId,
+  _id: String,
   avatar: String,
   firstName: {
     type: String,

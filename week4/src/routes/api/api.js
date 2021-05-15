@@ -47,5 +47,7 @@ router.get('/', function (req, res) {
 });
 
 require('./api.users')(router);
+require('./api.products')(router);
+require('./api.categories')(router);
 
 module.exports = router;
