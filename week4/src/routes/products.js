@@ -12,7 +12,7 @@ router.post('/products', async (req, res) => {
 	const product = new Product(req.body);
 	product.save().then(() => {
 		res.redirect('/products');
-	});
+	}).catch((err) => console.log(err));
 });
 
 router.get('/products/create', async (req, res) => {
@@ -26,15 +26,11 @@ router.get('/products/:id/edit', async (req, res) => {
 });
 
 router.put('/products/:id', async (req, res) => {
-	await Product.updateOne({ _id: req.params.id }, req.body)
-		.then(() => res.redirect('/products'));
+	await Product.updateOne({ _id: req.params.id }, req.body).then(() => res.redirect('/products'));
 });
 
-// router.delete('/products/:id', async (req, res) => {
-// 	Product.findByIdAndDelete(req.params.id);
-// 	await Product.find({})
-// 		.lean()
-// 		.then((products) => res.render('products', { title: 'Products', products }));
-// });
+router.delete('/products/:id', async (req, res) => {
+	Product.deleteOne({ _id: req.params.id }).then(() => res.redirect('back'));
+});
 
 module.exports = router;

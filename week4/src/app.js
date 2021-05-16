@@ -1,11 +1,12 @@
 const express = require('express');
-const handlebars = require('express-handlebars');
+const exphbs = require('express-handlebars');
 const logger = require('morgan');
 const path = require('path');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const createError = require('http-errors');
 const methodOverride = require('method-override');
+const moment = require('moment');
 
 const debug = require('debug')('app');
 
@@ -19,7 +20,17 @@ const app = express();
 
 app.log = debug;
 
-app.engine('hbs', handlebars({ defaultLayout: 'main', extname: '.hbs' }));
+app.engine(
+	'hbs',
+	exphbs({
+		extname: 'hbs',
+		helpers: {
+			generateDate: (date, format) => {
+				return moment(date).format(format);
+			},
+		},
+	})
+);
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, '/views'));
 

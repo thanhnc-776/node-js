@@ -71,12 +71,12 @@
 									<td><img src='{{avatar}}' alt='{{firstName}} {{lastName}}' width='50' /></td>
 									<td>{{firstName}}</td>
 									<td>{{lastName}}</td>
-									<td>{{dob}}</td>
+									<td>{{generateDate date 'L'}}</td>
 									<td>{{email}}</td>
 									<td>{{emailVerified}}</td>
-									<td>{{username}}</td>
-									<td class='text-right'>{{phoneNumber}}</td>
 									<td>{{role}}</td>
+									<td class='text-right'>{{phoneNumber}}</td>
+									<td>{{username}}</td>
 									<td>{{gender}}</td>
 									<td class='text-right'>{{zipcode}}</td>
 									<td>{{country}}</td>
@@ -89,7 +89,7 @@
 				</div>
 				<!-- /.panel-body -->
 				<div class='row'>
-					<div class='col-sm-6'>
+					<div class='col-sm-4'>
 						<div
 							class='dataTables_info'
 							id='dataTables-example_info'
@@ -99,27 +99,22 @@
 							Showing 0 to 0 of 0 entries
 						</div>
 					</div>
-					<div class='col-sm-6'>
-						<div class='dataTables_paginate paging_simple_numbers' id='dataTables-example_paginate'>
+					<div class='col-sm-8'>
+						<nav aria-label='...'>
 							<ul class='pagination'>
-								<li
-									class='paginate_button previous disabled'
-									aria-controls='dataTables-example'
-									tabindex='0'
-									id='dataTables-example_previous'
-								>
-									<a href='#'>Previous</a>
+								<li class='page-item disabled'>
+									<a class='page-link' href='#' tabindex='-1' aria-disabled='true'>Previous</a>
 								</li>
-								<li
-									class='paginate_button next disabled'
-									aria-controls='dataTables-example'
-									tabindex='0'
-									id='dataTables-example_next'
-								>
-									<a href='#'>Next</a>
+								<li class='page-item'><a class='page-link' href='#'>1</a></li>
+								<li class='page-item active' aria-current='page'>
+									<a class='page-link' href='#'>2</a>
+								</li>
+								<li class='page-item'><a class='page-link' href='#'>3</a></li>
+								<li class='page-item'>
+									<a class='page-link' href='#'>Next</a>
 								</li>
 							</ul>
-						</div>
+						</nav>
 					</div>
 				</div>
 			</div>

@@ -6,7 +6,7 @@ const createUser = require('./user-seeder')
 const { MONGO_URI = 'mongodb://localhost:27017/nordic' } = process.env;
 
 const mongooseData = mongoose
-	.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+	.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
 	.then(() => {
 		console.log('connection to db successfully!');
 		return createCategory();

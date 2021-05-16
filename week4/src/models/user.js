@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-// Define schema with supported data type
+
 const UserSchema = new Schema({
   _id: String,
   avatar: String,
@@ -9,11 +9,11 @@ const UserSchema = new Schema({
     required: true,
   },
   lastName: String,
-  dob: Date,
+  dob: {type: Date, default: Date.now},
   gender: String,
   email: String,
   isEmailValidate: Boolean,
-  roles: [String],
+  roles: String,
   username: { type: String, require: true },
   zipcode: String,
   phoneNumber: Number,
