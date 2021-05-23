@@ -6,7 +6,6 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const createError = require('http-errors');
 const methodOverride = require('method-override');
-const moment = require('moment');
 
 const debug = require('debug')('app');
 
@@ -15,20 +14,20 @@ const usersRouter = require('./routes/users');
 const productsRouter = require('./routes/products');
 const categoriesRouter = require('./routes/categories');
 const apiRouter = require('./routes/api/api');
+const sortMiddleware = require('./middleware/sortMiddleware');
 
 const app = express();
-
 app.log = debug;
+
+app.get('/', (req, res) => {
+	res.redirect('/admin')
+});
 
 app.engine(
 	'hbs',
 	exphbs({
 		extname: 'hbs',
-		helpers: {
-			generateDate: (date, format) => {
-				return moment(date).format(format);
-			},
-		},
+		helpers: require('./helpers/handlebars'),
 	})
 );
 app.set('view engine', 'hbs');
@@ -38,15 +37,16 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'data')));
 app.use(methodOverride('_method'));
+app.use(sortMiddleware);
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/admin/uploads', express.static('uploads'));
 
-app.use('/', indexRouter);
-app.use('/', usersRouter);
-app.use('/', productsRouter);
-app.use('/', categoriesRouter);
-app.use('/', apiRouter);
+app.use('/admin', indexRouter);
+app.use('/admin', usersRouter);
+app.use('/admin', productsRouter);
+app.use('/admin', categoriesRouter);
+app.use('/api', apiRouter);
 
 app.use(function (req, res, next) {
 	next(createError(404));
@@ -61,15 +61,23 @@ app.use(function (err, req, res) {
 });
 
 app.start = (PORT, MONGO_URL) => {
-	mongoose
-		.connect(MONGO_URL, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
-		.then(() => {
-			debug('Database connect success');
-			app.listen(PORT, () => console.log('App started and listening on port', PORT));
-		})
-		.catch((err) => {
-			debug('Database connection error:' + err);
+	return new Promise(async (resolve, reject) => {
+		await mongoose
+			.connect(MONGO_URL, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+			.then(() => {
+				debug('Database connect success');
+			})
+			.catch((err) => {
+				debug('Database connection error:' + err);
+			});
+		const server = app.listen(PORT, (err) => {
+			if (err) {
+				return reject(err);
+			}
+			console.log('App started and listening on port', PORT);
+			resolve(server);
 		});
+	});
 };
 
 module.exports = app;

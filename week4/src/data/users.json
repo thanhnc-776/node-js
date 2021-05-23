@@ -8,7 +8,7 @@
   "body": [
     {
       "_id": "001",
-      "avatar": "https://api.adorable.io/avatar/nordiccoder",
+      "avatar": "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg",
       "firstName": "Nordic",
       "lastName": "Coder",
       "dob": "1990-12-10T13:06:35.216Z",
@@ -23,7 +23,7 @@
     },
     {
       "_id": "002",
-      "avatar": "https://api.adorable.io/avatar/ttt",
+      "avatar": "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg",
       "firstName": "Thanh",
       "lastName": "Trần",
       "dob": "1984-11-10T13:06:35.216Z",
@@ -38,7 +38,7 @@
     },
     {
       "_id": "003",
-      "avatar": "https://api.adorable.io/avatar/ltt",
+      "avatar": "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg",
       "firstName": "Tường",
       "lastName": "Lâm Thiên",
       "dob": "1990-12-10T13:06:35.216Z",
@@ -53,7 +53,7 @@
     },
     {
       "_id": "004",
-      "avatar": "https://api.adorable.io/avatar/tvda",
+      "avatar": "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg",
       "firstName": "Anh",
       "lastName": "Từ Vũ Đức",
       "dob": "1990-12-10T13:06:35.216Z",
@@ -68,7 +68,7 @@
     },
     {
       "_id": "005",
-      "avatar": "https://api.adorable.io/avatar/nnt",
+      "avatar": "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg",
       "firstName": "Tiến",
       "lastName": "Nguyễn Như",
       "dob": "1990-12-10T13:06:35.216Z",
@@ -83,7 +83,7 @@
     },
     {
       "_id": "006",
-      "avatar": "https://api.adorable.io/avatar/caq",
+      "avatar": "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg",
       "firstName": "Quốc",
       "lastName": "Cao Anh",
       "dob": "1990-12-10T13:06:35.216Z",

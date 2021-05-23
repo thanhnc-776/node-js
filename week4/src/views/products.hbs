@@ -5,7 +5,7 @@
 
 			<div class='header-bar page-header'>
 				<h1 class='page-header text-gray-800'>Products List</h1>
-				<a class='header-bar__btn btn btn-success' href='/products/create'><i
+				<a class='header-bar__btn btn btn-success' href='/admin/products/create'><i
 						class='fa fa-plus'
 					></i>
 					Create new product</a>
@@ -59,13 +59,16 @@
 					>
 						<thead>
 							<tr>
-								<th>#</th>
-								<th>Name</th>
+								<th>
+									#
+									{{{sortable '_id' _sort}}}
+								</th>
+								<th>Name {{{sortable 'name' _sort}}}</th>
 								<th>Thumbnail</th>
-								<th>Description</th>
-								<th>Category ID</th>
-								<th>Sale Price</th>
-								<th>Original Price</th>
+								<th>Description {{{sortable 'shortDescription' _sort}}}</th>
+								<th>Category ID {{{sortable 'categoryId' _sort}}}</th>
+								<th>Sale Price {{{sortable 'salePrice' _sort}}}</th>
+								<th>Original Price {{{sortable 'originalPrice' _sort}}}</th>
 								<th>Product Images</th>
 								<th>Action</th>
 
@@ -96,7 +99,7 @@
 										<a
 											style='justify-content: center;'
 											class='btn btn-outline btn-success btn-xs mb-1'
-											href='products/{{this._id}}/edit'
+											href='products/{{this._id}}'
 										>Edit</a>
 										<a
 											class='btn btn-danger'
@@ -132,7 +135,11 @@
 									Are you sure want to delete this product?
 								</div>
 								<div class='modal-footer'>
-									<button type='button' id="btn-delete-product" class='btn btn-danger'>Delete</button>
+									<button
+										type='button'
+										id='btn-delete-product'
+										class='btn btn-danger'
+									>Delete</button>
 									<button
 										type='button'
 										class='btn btn-secondary'
@@ -156,7 +163,7 @@
 <div class='row'>
 	<div class='col-sm-4'>
 		<div class='dataTables_info' id='dataTables-example_info' role='status' aria-live='polite'>
-			Showing 0 to 0 of 0 entries
+			Showing 0 to 0 of {{products.length}} entries
 		</div>
 	</div>
 	<div class='col-sm-8'>
@@ -165,11 +172,11 @@
 				<li class='page-item disabled'>
 					<a class='page-link' href='#' tabindex='-1' aria-disabled='true'>Previous</a>
 				</li>
-				<li class='page-item'><a class='page-link' href='#'>1</a></li>
+				<li class='page-item'><a class='page-link' href='?page=1'>1</a></li>
 				<li class='page-item active' aria-current='page'>
-					<a class='page-link' href='#'>2</a>
+					<a class='page-link' href='?page=2'>2</a>
 				</li>
-				<li class='page-item'><a class='page-link' href='#'>3</a></li>
+				<li class='page-item'><a class='page-link' href="?page=3">3</a></li>
 				<li class='page-item'>
 					<a class='page-link' href='#'>Next</a>
 				</li>
